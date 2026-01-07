@@ -9,6 +9,7 @@ import PasswordResetPage from "@/pages/password-reset-page";
 import GlobalLayout from "./components/layout/global-layout";
 import GuestOnlyLayout from "./components/layout/guset-only-layout";
 import MemberOnlyLayout from "./components/layout/member-only-layout";
+import LandingPage from "@/pages/landing-page";
 
 export default function RootRoute() {
   return (
@@ -21,12 +22,15 @@ export default function RootRoute() {
         </Route>
 
         <Route element={<MemberOnlyLayout />}>
-          <Route path="/" element={<IndexPage />} />
+          <Route path="/sns" element={<IndexPage />} />
           <Route path="/post/:postId" element={<PostDetailPage />} />
           <Route path="/profile/:userId" element={<ProfileDetailPage />} />
           <Route path="/password-reset" element={<PasswordResetPage />} />
         </Route>
-        <Route path="*" element={<Navigate to={"/"} />} />
+
+        {/* 새로운 LandingPage 라우트 */}
+        <Route path="/" element={<LandingPage />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Route>
     </Routes>
   );
